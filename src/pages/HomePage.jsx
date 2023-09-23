@@ -164,7 +164,9 @@ export default function HomePage() {
   const showToastMessage = (message) => {
     setToastMessage(message);
     setShowToast(true);
-    return;
+    setWeekWeatherData([]);
+    setDailyWeatherData([]);
+    setWeatherHighlights([]);
   };
 
   /////////////////////////////////////// JSX /////////////////////////////////////////////
