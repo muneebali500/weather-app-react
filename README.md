@@ -4,9 +4,7 @@
 
 The Project displays weather data of searched cities. It displays the Hourly data for current day, weather details for the current day and also forecast data for the coming week. The user input city name in the input search field and hits enter or hit the search icon and it loads the data.
 
-[Link to Live Project]()
-
-![Weather App](/public/weather-app.png)
+![Weather App](/public/images/weather-app.png)
 
 ## Technologies Used
 
@@ -19,7 +17,7 @@ The Project displays weather data of searched cities. It displays the Hourly dat
     - useState
     - useEffect
     - useRef
-- [OpenWeatherMap](https://openweathermap.org/current) - for using endpoints to fetch data.
+- [OpenWeatherMap](https://openweathermap.org/) - for using endpoints to fetch data.
 - [Visual Studio Code](https://code.visualstudio.com/) - the code editor being used to build the project.
 - [Chrome DevTools](https://developer.chrome.com/docs/devtools/) - used heavily for debugging during development process.
 - [Git](https://git-scm.com/) - the Git feature in VS Code was used for version control and push to github.
@@ -32,10 +30,6 @@ The Project displays weather data of searched cities. It displays the Hourly dat
 #### Development
 
 The project was developed using VS Code editor and its integrated version control feature to commit gits, which are then pushed to GitHub in order to store the codes remotely.
-
-#### Netlify
-
-The project was deployed to Netlify
 
 #### Forking the repository
 
