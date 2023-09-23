@@ -34,6 +34,8 @@ export default function HomePage() {
 
   const { dt, main, name, sys, weather, wind, clouds } = currentWeatherData;
 
+  console.log({ currentWeatherData });
+
   //////// useffect runs every time when new city entered as input and set the current day's weather details
   useEffect(() => {
     if (Object.keys(currentWeatherData).length) {
@@ -162,6 +164,7 @@ export default function HomePage() {
   const showToastMessage = (message) => {
     setToastMessage(message);
     setShowToast(true);
+    return;
   };
 
   /////////////////////////////////////// JSX /////////////////////////////////////////////
