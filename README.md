@@ -6,7 +6,7 @@ The Project displays weather data of searched cities. It displays the Hourly dat
 
 [Link to Live Project]()
 
-![Upwork UI Home Page](/public/user-auth.png)
+![Weather App](/public/weather-app.png)
 
 ## Technologies Used
 
@@ -39,6 +39,6 @@ The project was deployed to Netlify
 
 #### Forking the repository
 
-1. Log in to GitHub and navigate to this project's repository: [weather-app]()
+1. Log in to GitHub and navigate to this project's repository: [weather-app](https://github.com/muneebali500/weather-app-react)
 2. Just above the navigation menu of the repository (above the Settings button) locate the Fork button
 3. The original copy of the repository is now copied on your GitHub account which allows you to view and/or work on the codes without affecting the original work
