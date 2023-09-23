@@ -90,7 +90,7 @@ export default function HomePage() {
       );
       const { lat, lon } = cityData[0];
 
-      getWeatherData(lat, lon);
+      getWeatherData(lat, lon, cityName);
     } catch (error) {
       console.log(error);
       showToastMessage("Something went wrong! Please try again");
@@ -100,13 +100,13 @@ export default function HomePage() {
   }
 
   ////// function fetches current day's weather details from API and set the states to display on UI
-  async function getWeatherData(latitude, longitude) {
+  async function getWeatherData(latitude, longitude, cityName) {
     try {
       const { data } =
         await axios.get(`${WEATHER_API_URL}?lat=${latitude}&lon=${longitude}&units=metric&appid=${APIKey}
       `);
 
-      setCurrentWeatherData(data);
+      setCurrentWeatherData({ ...data, name: cityName });
       getHourlyAndWeeklyWeather(latitude, longitude);
     } catch (error) {
       console.log(error);
@@ -234,7 +234,7 @@ export default function HomePage() {
 
               <li className="text-sm text-center lg:text-start">
                 <i className="fa-solid fa-location-dot mr-1"></i>
-                <span>
+                <span className="capitalize">
                   {name}, {sys.country}
                 </span>
               </li>
