@@ -84,15 +84,23 @@ export default function HomePage() {
   async function getCityCoordinates(cityName) {
     setIsLoading(true);
 
-    const capitalizeCityName = cityName[0].toUpperCase() + cityName.slice(1);
-
     try {
-      const { data: cityData } = await axios.get(
-        `${GEOCODE_API_URL}?q=${capitalizeCityName}&appid=${APIKey}`
-      );
+      // const { data: cityData } = await axios.get(
+      //   `${GEOCODE_API_URL}?q=${capitalizeCityName}&appid=${APIKey}`
+      // );
+      const { data: cityData } = await axios({
+        method: "GET",
+        url: `${GEOCODE_API_URL}?q=${cityName}&appid=${APIKey}`,
+        mode: "cors",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+      });
+
       const { lat, lon } = cityData[0];
 
-      getWeatherData(lat, lon, capitalizeCityName);
+      getWeatherData(lat, lon, cityName);
     } catch (error) {
       console.log(error);
       showToastMessage("Something went wrong! Please try again");
