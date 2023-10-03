@@ -20,6 +20,8 @@ export function formatTimestamp(timestamp) {
 export function isNightTime() {
   const currentTime = new Date();
 
+  // currentTime.setHours(20);
+
   const currentHour = currentTime.getHours();
   return currentHour >= 18 || currentHour < 6;
 }

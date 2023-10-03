@@ -84,13 +84,15 @@ export default function HomePage() {
   async function getCityCoordinates(cityName) {
     setIsLoading(true);
 
+    const capitalizeCityName = cityName[0].toUpperCase() + cityName.slice(1);
+
     try {
       const { data: cityData } = await axios.get(
-        `${GEOCODE_API_URL}?q=${cityName}&appid=${APIKey}`
+        `${GEOCODE_API_URL}?q=${capitalizeCityName}&appid=${APIKey}`
       );
       const { lat, lon } = cityData[0];
 
-      getWeatherData(lat, lon, cityName);
+      getWeatherData(lat, lon, capitalizeCityName);
     } catch (error) {
       console.log(error);
       showToastMessage("Something went wrong! Please try again");
@@ -131,7 +133,7 @@ export default function HomePage() {
         }
       });
 
-      /// filter data to computer current days hourly weather data
+      /// filter data to compute current days hourly weather data
       const dailyForecast = data.list.filter(
         (forecast) =>
           new Date(forecast.dt_txt).getDate() === weekForecastDays[0]
@@ -172,11 +174,6 @@ export default function HomePage() {
   /////////////////////////////////////// JSX /////////////////////////////////////////////
   return (
     <main className="flex flex-col lg:flex-row h-screen">
-      <Toast
-        message={toastMessage}
-        showToast={showToast}
-        setShowToast={setShowToast}
-      />
       {/*--------- left side of dashboard ----------- */}
       <section className="lg:max-w-[350px] flex flex-col items-center lg:items-start bg-primary px-8 py-10">
         <form onSubmit={handleSubmit} className="relative mb-5">
@@ -279,22 +276,24 @@ export default function HomePage() {
                     ))}
                   </ul>
 
-                  <div className="absolute top-1/2 -translate-y-1/2 w-full flex justify-between">
-                    <button
-                      type="button"
-                      className="ml-2 opacity-50 cursor-pointer"
-                      onClick={scrollLeft}
-                    >
-                      <i className="fa-solid fa-chevron-left"></i>
-                    </button>
-                    <button
-                      type="button"
-                      className="mr-2 opacity-50 cursor-pointer"
-                      onClick={scrollRight}
-                    >
-                      <i className="fa-solid fa-chevron-right"></i>
-                    </button>
-                  </div>
+                  {dailyWeatherData.length > 4 && (
+                    <div className="absolute top-1/2 -translate-y-1/2 w-full flex justify-between">
+                      <button
+                        type="button"
+                        className="ml-2 opacity-50 cursor-pointer"
+                        onClick={scrollLeft}
+                      >
+                        <i className="fa-solid fa-chevron-left"></i>
+                      </button>
+                      <button
+                        type="button"
+                        className="mr-2 opacity-50 cursor-pointer"
+                        onClick={scrollRight}
+                      >
+                        <i className="fa-solid fa-chevron-right"></i>
+                      </button>
+                    </div>
+                  )}
                 </div>
               </section>
             )}
@@ -335,6 +334,12 @@ export default function HomePage() {
           </>
         )}
       </section>
+
+      <Toast
+        message={toastMessage}
+        showToast={showToast}
+        setShowToast={setShowToast}
+      />
     </main>
   );
 }

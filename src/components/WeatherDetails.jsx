@@ -1,4 +1,3 @@
-import React from "react";
 import { formatTimestamp } from "../utils/helpers";
 
 export default function WeatherDetails({ state, title, imgName, value, unit }) {
